@@ -1,0 +1,17 @@
+.grid-snap {
+    width: 138px;
+    height: 123px;
+    background-image:url("./table.png");
+    background-repeat: no-repeat;
+    font-size: 1.2em;
+    border-color: black;
+    padding: 2%;
+    margin: 5%;
+}
+
+#grid {
+    width: 600px;
+    height: 400px;
+    background-color: darkgrey;
+}
+
