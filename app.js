@@ -55,7 +55,7 @@ for (i = 0; i < elements.length; i++) {
     coordonnes[i][1] = 0;
     elements[i].setAttribute("number", i);
     elements[i].setAttribute("rotated", 0);
-    elements[i].innerHTML = i + 1;
+    elements[i].innerHTML ="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" +  (i + 1); //lol
 }
 
 
@@ -87,7 +87,7 @@ interact(".grid-snap")
     .on('doubletap', function (event) {
         var change;
         console.log(event.target.attributes.getNamedItem("rotated").nodeValue);
-        let rotation = ( parseInt(event.target.attributes.getNamedItem("rotated").nodeValue) + 45) % 180;
+        let rotation = ( parseInt(event.target.attributes.getNamedItem("rotated").nodeValue) + 45) % 360;
         event.target.setAttribute("rotated", rotation);
 
         // numero_element = event.target.attributes.getNamedItem("number").nodeValue;
