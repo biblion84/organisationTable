@@ -97,10 +97,23 @@ interact(".grid-snap")
     });
 
 function addTable() {
-    let grid = document.getElementById("grid");
+    let grid = document.getElementById("table");
+    grid = grid.lastElementChild.lastElementChild;
+
+    console.log(grid.childElementCount);
+    let td = document.createElement("td");
     let table = document.createElement("div");
     table.setAttribute("class", "grid-snap");
-    grid.appendChild(table);
+
+    td.appendChild(table);
+
+    if (grid.childElementCount > 5){
+        grid = grid.parentNode;
+        let tr = document.createElement("tr");
+        tr.appendChild(td);
+        grid.appendChild(tr);
+    } else
+        grid.appendChild(td);
     elements = document.getElementsByClassName("grid-snap");
 
     coordonnes[elements.length - 1] = new Array(2);
