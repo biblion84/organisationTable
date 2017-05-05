@@ -1,7 +1,9 @@
 .grid-snap {
-    width: 138px;
-    height: 123px;
-    background-image:url("./table.png");
+    height: 70px;
+    width: 89px;
+
+    background-image:url("table.png");
+    background-size: contain;
     background-repeat: no-repeat;
     font-size: 1.2em;
     border-color: black;
@@ -10,8 +12,11 @@
 }
 
 #grid {
-    width: 1200px;
-    height: 600px;
+    background: url("./salleRelais.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;;
+    width: 908px;
+    height: 510px;
     background-color: darkgrey;
 }
 

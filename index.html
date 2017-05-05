@@ -8,76 +8,28 @@
 
 </head>
 <body>
-<button onclick="addTable()">Ajouter une table</button>
-(elle se placera en bas de page) <br>
-Astuce : Double cliquez pour faire pivoter les tables
-<div id="grid" >
-</div>
-    <table id="table">
-        <tr>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-        </tr>
-        <tr>
 
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-        </tr>
-        <tr>
+<table>
+    <tr>
+        <td>
+    <div id="grid" >
 
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-            <td>
-                <div class="grid-snap"></div>
-            </td>
-        </tr>
-    </table>
+    </div>
+        </td>
+        <td style="vertical-align: top">
+            <button onclick="addTable()">Ajouter une table</button>
+            (elle se placera en bas de page) <br>
+            Astuce : Double cliquez pour faire pivoter les tables
 
+        </td>
+    </tr>
+</table>
+<table id="table">
+    <tr>
+
+    </tr>
+</table>
 </body>
 <script src="interact.js"></script>
 <script src="app.js"></script>
+<script>addTable(20);</script>
