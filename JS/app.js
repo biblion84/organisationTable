@@ -78,15 +78,18 @@ function addTable(iteration, tableType) {
 }
 
 function getTableByName(tableType){
+    if (typeof relativePath === 'undefined'){
+        relativePath = "./";
+    }
     switch (tableType){
         case "ronde10":
-            return "./images/Table_ronde_10_personnes.png";
+            return relativePath + "images/Table_ronde_10_personnes.png";
         case "ronde8":
-            return "./images/Table_ronde_8_personnes.png";
+            return relativePath + "images/Table_ronde_8_personnes.png";
         case "rectangle10":
-            return "./images/table_rectangulaire_2M.png";
+            return relativePath + "images/table_rectangulaire_2M.png";
         default:
-            return "./images/table_rectangulaire_2M.png";
+            return relativePath + "images/table_rectangulaire_2M.png";
     }
 
 
