@@ -67,7 +67,7 @@ function addTable(iteration, tableType) {
 
     let img = document.createElement("img");
     img.setAttribute("src" , getTableByName(tableType));
-    img.setAttribute("class", "table");
+    img.setAttribute("class", "tables"); //antiBootstrap
     img.setAttribute("alt", "une table  à placer");
 
     elements[lst_tb].appendChild(img);
