@@ -1,4 +1,4 @@
-const MAX_TABLE_ROW = 8;
+const MAX_TABLE_ROW = 5;
 
 let numero_element;
 let elements = document.getElementsByClassName("grid-snap");
@@ -29,19 +29,22 @@ interact(".grid-snap") // librairie interact.js
             event.target.style.webkitTransform += 'rotate(' + event.target.attributes.getNamedItem("rotated").nodeValue + 'deg)';
     })
     .on('doubletap', function (event) {
-        let rotation = ( parseInt(event.target.attributes.getNamedItem("rotated").nodeValue) + 45) % 360;
-        event.target.setAttribute("rotated", rotation);
-        event.target.style.webkitTransform += 'rotate(' + 45 + 'deg)';
+        let target = event.target.parentNode;
+        let rotation = ( parseInt(target.attributes.getNamedItem("rotated").nodeValue) + 45) % 360;
+        target.setAttribute("rotated", rotation);
+        target.style.webkitTransform += 'rotate(' + 45 + 'deg)';
     });
 
-function addTable(iteration) {
+function addTable(iteration, tableType) {
     let grid = document.getElementById("table");
     grid = grid.lastElementChild.lastElementChild;
 
-    let td = document.createElement("td");
+
     let table = document.createElement("div");
     table.setAttribute("class", "grid-snap");
 
+
+    let td = document.createElement("td");
     td.appendChild(table);
 
     if (grid.childElementCount > MAX_TABLE_ROW) {
@@ -60,11 +63,37 @@ function addTable(iteration) {
     coordonnes[lst_tb][1] = 0;
     elements[lst_tb].setAttribute("number", lst_tb);
     elements[lst_tb].setAttribute("rotated", "0");
-    elements[lst_tb].innerHTML = "&nbsp".repeat(5) + elements.length;
+    //elements[lst_tb].innerHTML = "&nbsp".repeat(5) + elements.length;
+
+    let img = document.createElement("img");
+    img.setAttribute("src" , getTableByName(tableType));
+    img.setAttribute("class", "table");
+    img.setAttribute("alt", "une table  à placer");
+
+    elements[lst_tb].appendChild(img);
 
     if (iteration > 0) {
-        addTable(iteration - 1);
+        addTable(iteration - 1, tableType);
     }
+}
+
+function getTableByName(tableType){
+    switch (tableType){
+        case "ronde10":
+            return "images/Table_ronde_10_personnes.png";
+        case "ronde8":
+            return "images/Table_ronde_8_personnes.png";
+        case "rectangle10":
+            return "images/table_rectangulaire_2M.png";
+        default:
+            return "images/table_rectangulaire_2M.png";
+    }
+
+
+}
+
+function displayInformation (){
+
 }
 
 

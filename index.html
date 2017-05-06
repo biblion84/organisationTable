@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
 
 </head>
@@ -13,6 +13,7 @@
     <tr>
         <td>
     <div id="grid" >
+        <img src="images/salleRelais.jpg" alt="salle sur laquelle placer les tables" id="salle">
 
     </div>
         </td>
@@ -30,6 +31,10 @@
     </tr>
 </table>
 </body>
-<script src="interact.js"></script>
-<script src="app.js"></script>
-<script>addTable(20);</script>
+<script src="JS/interact.js"></script>
+<script src="JS/app.js"></script>
+<script>
+    addTable(5);
+    addTable(5, "ronde10");
+    addTable(5, "ronde8");
+</script>

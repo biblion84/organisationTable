@@ -1,0 +1,18 @@
+.grid-snap {
+    object-fit: cover;
+
+    font-size: 1.2em;
+    border-color: black;
+    padding: 2%;
+    margin: 5%;
+}
+
+
+#salle {
+    object-fit: cover;
+    zoom: 50%;
+}
+
+.table {
+    zoom : 50%;
+}
