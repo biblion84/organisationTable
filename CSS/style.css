@@ -5,16 +5,44 @@
     border-color: black;
 }
 
-
 #salle {
     object-fit: cover;
     zoom: 50%;
 }
 
 .tables {
-    zoom : 50%;
+    zoom: 50%;
 }
 
-img{
-    width: 100%;
+/*width 1005 ne marche pas a cause de la taille fixe des td*/
+/*img {*/ 
+    /*width: 100%;*/
+/*}*/
+
+#salle {
+    zoom: 15%
+}
+
+.tables {
+    zoom: 15%;
+}
+
+@media screen and (min-width: 690px) {
+    #salle {
+        zoom: 30%
+    }
+
+    .tables {
+        zoom: 30%;
+    }
+}
+
+@media screen and (min-width: 1252px) {
+    #salle {
+        zoom: 42%
+    }
+
+    .tables {
+        zoom: 42%;
+    }
 }
