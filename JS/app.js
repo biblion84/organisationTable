@@ -45,8 +45,11 @@ interact(".grid-snap") // librairie interact.js
 function addTable(iteration, tableType) {
     if (isNaN(iteration)) // So that you can write addTable("ronde10"), i could have changed the html call
         tableType = iteration; // but i'm lazy
+
     if (tableCount.hasOwnProperty(tableType) && tableCount[tableType] > 0){
         tableCount[tableType]--;
+    } else if (tableCount.hasOwnProperty("rectangle10") && tableCount["rectangle10"] > 0) {
+        tableCount["rectangle10"]--;
     } else {
         console.log("nous n'avons plus ce type de table");
         return;
