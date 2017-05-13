@@ -36,6 +36,8 @@ interact(".grid-snap") // librairie interact.js
     });
 
 function addTable(iteration, tableType) {
+    if (isNaN(iteration)) // So that you can write addTable("ronde10"), i could have changed the html call
+        tableType = iteration; // but i'm lazy
     let grid = document.getElementById("table");
     grid = grid.lastElementChild.lastElementChild;
 
