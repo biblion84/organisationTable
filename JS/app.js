@@ -4,6 +4,11 @@ let numero_element;
 let elements = document.getElementsByClassName("grid-snap");
 let coordonnes = new Array(elements.length);
 
+let tableCount = {
+    "ronde10" : 7,
+    "ronde8" : 7,
+    "rectangle10" : 8};
+
 interact(".grid-snap") // librairie interact.js
     .draggable({
 
@@ -35,9 +40,17 @@ interact(".grid-snap") // librairie interact.js
         target.style.webkitTransform += 'rotate(' + 45 + 'deg)';
     });
 
+
+
 function addTable(iteration, tableType) {
     if (isNaN(iteration)) // So that you can write addTable("ronde10"), i could have changed the html call
         tableType = iteration; // but i'm lazy
+    if (tableCount.hasOwnProperty(tableType) && tableCount[tableType] > 0){
+        tableCount[tableType]--;
+    } else {
+        console.log("nous n'avons plus ce type de table");
+        return;
+    }
     let grid = document.getElementById("table");
     grid = grid.lastElementChild.lastElementChild;
 
@@ -96,10 +109,10 @@ function getTableByName(tableType){
 
 
 }
-
-function displayInformation (){
-
-}
+//
+// function displayInformation (){
+//
+// }
 
 
 
