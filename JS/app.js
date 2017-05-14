@@ -5,8 +5,8 @@ let elements = document.getElementsByClassName("grid-snap");
 let coordonnes = new Array(elements.length);
 
 let tableCount = {
-    "ronde10" : 7,
-    "ronde8" : 7,
+    "ronde10" : 3,
+    "ronde8" : 10,
     "rectangle10" : 8};
 
 interact(".grid-snap") // librairie interact.js
@@ -105,9 +105,9 @@ function getTableByName(tableType){
         case "ronde8":
             return relativePath + "images/Table_ronde_8_personnes.png";
         case "rectangle10":
-            return relativePath + "images/table_rectangulaire_2M.png";
+            return relativePath + "images/table_rectangulaire_SC.png";
         default:
-            return relativePath + "images/table_rectangulaire_2M.png";
+            return relativePath + "images/table_rectangulaire_SC.png";
     }
 
 
