@@ -41,7 +41,7 @@ interact(".grid-snap") // librairie interact.js
     });
 
 
-
+// 2 tables de 2m et 2 de 2m50
 function addTable(iteration, tableType) {
     if (isNaN(iteration)) // So that you can write addTable("ronde10"), i could have changed the html call
         tableType = iteration; // but i'm lazy
@@ -97,17 +97,17 @@ function addTable(iteration, tableType) {
 
 function getTableByName(tableType){
     if (typeof relativePath === 'undefined'){
-        relativePath = "./";
+        relativePath = "./images/";
     }
     switch (tableType){
         case "ronde10":
-            return relativePath + "images/Table_ronde_10_personnes.png";
+            return relativePath + "Table_ronde_10_personnes.png";
         case "ronde8":
-            return relativePath + "images/Table_ronde_8_personnes.png";
+            return relativePath + "Table_ronde_8_personnes.png";
         case "rectangle10":
-            return relativePath + "images/table_rectangulaire_SC.png";
+            return relativePath + "table_rectangulaire_SC.png";
         default:
-            return relativePath + "images/table_rectangulaire_SC.png";
+            return relativePath + "table_rectangulaire_SC.png";
     }
 
 
