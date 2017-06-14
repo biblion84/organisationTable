@@ -9,6 +9,7 @@ let tableCount = {
     "ronde8" : 10,
     "rectangle10" : 8};
 
+
 interact(".grid-snap") // librairie interact.js
     .draggable({
 
@@ -62,6 +63,7 @@ function addTable(iteration, tableType) {
     table.setAttribute("class", "grid-snap");
 
 
+
     let td = document.createElement("td");
     td.appendChild(table);
 
@@ -75,20 +77,30 @@ function addTable(iteration, tableType) {
     }
 
     elements = document.getElementsByClassName("grid-snap");
-    let lst_tb = elements.length - 1;
-    coordonnes[lst_tb] = [];
-    coordonnes[lst_tb][0] = 0;
-    coordonnes[lst_tb][1] = 0;
-    elements[lst_tb].setAttribute("number", lst_tb);
-    elements[lst_tb].setAttribute("rotated", "0");
-    //elements[lst_tb].innerHTML = "&nbsp".repeat(5) + elements.length;
+    let lastIndice = elements.length - 1;
+    table.setAttribute("id", "table" + lastIndice); //apres le lastIndice car besoin de ce dernier
+    coordonnes[lastIndice] = [];
+    coordonnes[lastIndice][0] = 0;
+    coordonnes[lastIndice][1] = 0;
+    elements[lastIndice].setAttribute("number", lastIndice);
+    elements[lastIndice].setAttribute("rotated", "0");
+    elements[lastIndice].getPosition = function (id){
+        let position = new cumulativeOffset(document.getElementById(id));
+        let matrix = cssToMatrix(id);
+        let transformObj = matrixToTransformObj(matrix);
+        let toAdd = transformObj.translate.split(",");
+        position.top += parseInt(toAdd[1]);
+        position.left += parseInt(toAdd[0]);
+        return position;
+    };
+    //elements[lastIndice].innerHTML = "&nbsp".repeat(5) + elements.length;
 
     let img = document.createElement("img");
     img.setAttribute("src" , getTableByName(tableType));
     img.setAttribute("class", "tables"); //antiBootstrap
     img.setAttribute("alt", "une table  à placer");
 
-    elements[lst_tb].appendChild(img);
+    elements[lastIndice].appendChild(img);
 
     if (iteration > 0) {
         addTable(iteration - 1, tableType);
@@ -109,9 +121,73 @@ function getTableByName(tableType){
         default:
             return relativePath + "table_rectangulaire_SC.png";
     }
+}
 
+function drawCanvas(id){
+    let img = document.getElementById(id);
 
 }
+
+var cumulativeOffset = function(element) {
+    var top = 0, left = 0;
+    do {
+        top += element.offsetTop  || 0;
+        left += element.offsetLeft || 0;
+        element = element.offsetParent;
+    } while(element);
+
+    return {
+        top: top,
+        left: left
+    };
+};
+/**
+ * Retrieves element transformation as a matrix
+ *
+ * Note that this will only take translate and rotate in account,
+ * also it always reports px and deg, never % or turn!
+ *
+ * @param elementId
+ * @return string matrix
+ */
+var cssToMatrix = function(elementId) {
+    var element = document.getElementById(elementId),
+        style = window.getComputedStyle(element);
+
+    return style.getPropertyValue("-webkit-transform") ||
+        style.getPropertyValue("-moz-transform") ||
+        style.getPropertyValue("-ms-transform") ||
+        style.getPropertyValue("-o-transform") ||
+        style.getPropertyValue("transform");
+}
+
+/**
+ * Transforms matrix into an object
+ *
+ * @param string matrix
+ * @return object
+ */
+var matrixToTransformObj = function(matrix) {
+    // this happens when there was no rotation yet in CSS
+    if(matrix === 'none') {
+        matrix = 'matrix(0,0,0,0,0)';
+    }
+    var obj = {},
+        values = matrix.match(/([-+]?[\d\.]+)/g);
+
+    obj.rotate = (Math.round(
+                Math.atan2(
+                    parseFloat(values[1]),
+                    parseFloat(values[0])) * (180/Math.PI)) || 0
+        ).toString() + 'deg';
+    obj.translate = values[5] ? values[4] + 'px, ' + values[5] + 'px' : (values[4] ? values[4] + 'px' : '');
+
+    return obj;
+};
+
+var matrix = cssToMatrix('transformed-thingy');
+var transformObj = matrixToTransformObj(matrix);
+console.log(matrix, transformObj);
 //
 // function displayInformation (){
 //

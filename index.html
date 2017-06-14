@@ -19,6 +19,7 @@
         </td>
         <td style="vertical-align: top">
             <button onclick="addTable()">Ajouter une table</button>
+            <button onclick="showOffset()">Show offset</button>
             (elle se placera en bas de page) <br>
             Astuce : Double cliquez pour faire pivoter les tables
 
@@ -37,4 +38,13 @@
     addTable(5);
     addTable(5, "ronde10");
     addTable(5, "ronde8");
+    function showOffset(){
+        let t = new cumulativeOffset(document.getElementById("table1"));
+        var matrix = cssToMatrix('table1');
+        var transformObj = matrixToTransformObj(matrix);
+        let toAdd = transformObj.translate.split(",");
+        t.top += parseInt(toAdd[1]);
+        t.left += parseInt(toAdd[0]);
+        console.log(t);
+    }
 </script>
